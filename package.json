@@ -1,6 +1,6 @@
 {
   "name": "@saeris/markdown-it-del",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A markdown-it plugin which adds syntax support for the HTML `<del>` element.",
   "author": "Drake Costa <drake@saeris.io> (https://github.com/Saeris/)",
   "license": "MIT",
