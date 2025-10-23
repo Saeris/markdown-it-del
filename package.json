@@ -1,0 +1,83 @@
+{
+  "name": "@saeris/markdown-it-del",
+  "version": "0.0.0",
+  "description": "A markdown-it plugin which adds syntax support for the HTML `<del>` element.",
+  "author": "Drake Costa <drake@saeris.io> (https://github.com/Saeris/)",
+  "license": "MIT",
+  "keywords": [
+    "markdown-it-plugin",
+    "markdown-it",
+    "markdown",
+    "delete",
+    "del"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saeris/markdown-it-del.git"
+  },
+  "homepage": "https://github.com/saeris/markdown-it-del#readme",
+  "bugs": {
+    "url": "https://github.com/saeris/markdown-it-del/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "engines": {
+    "node": ">=20.x"
+  },
+  "packageManager": "yarn@4.10.3",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "module": "./dist/index.js",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "default": "./dist/index.js"
+    },
+    "./theme.css": "./dist/theme.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*",
+    "src/**/*"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "ci": "yarn lint && yarn typecheck && yarn test",
+    "build": "tsdown",
+    "lint": "eslint \"./src/**/*.{j,t}s?(x)\"",
+    "format": "yarn lint --fix",
+    "release": "yarn build && changeset publish",
+    "test": "vitest --fileParallelism",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.7",
+    "@saeris/eslint-config": "^3.1.2",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^24.9.1",
+    "eslint": "9.38.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-testgen": "^0.1.6",
+    "prettier": "^3.6.2",
+    "tsdown": "^0.15.9",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.1"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false
+  }
+}

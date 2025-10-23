@@ -1,0 +1,142 @@
+.
+--Delete--
+.
+<p><del>Delete</del></p>
+.
+
+
+.
+x ----foo-- bar--
+.
+<p>x <del><del>foo</del> bar</del></p>
+.
+
+.
+x --foo --bar----
+.
+<p>x <del>foo <del>bar</del></del></p>
+.
+
+.
+x ----foo----
+.
+<p>x <del><del>foo</del></del></p>
+.
+
+.
+x ---foo---
+.
+<p>x -<del>foo-</del></p>
+.
+
+
+Deletes have the same priority as emphases:
+.
+**--test**--
+
+--**test--**
+.
+<p><strong>--test</strong>--</p>
+<p><del>**test</del>**</p>
+.
+
+
+Deletes have the same priority as emphases with respect to links:
+.
+[--link]()--
+
+--[link--]()
+.
+<p><a href="">--link</a>--</p>
+<p>--<a href="">link--</a></p>
+.
+
+
+Deletes have the same priority as emphases with respect to backticks:
+.
+--`code--`
+
+`--code`--
+.
+<p>--<code>code--</code></p>
+<p><code>--code</code>--</p>
+.
+
+
+Nested Deletes:
+.
+--foo --bar-- baz--
+.
+<p><del>foo <del>bar</del> baz</del></p>
+.
+
+
+Nested Deletes with emphasis:
+.
+--f **o --o b-- a** r--
+.
+<p><del>f <strong>o <del>o b</del> a</strong> r</del></p>
+.
+
+
+Should not have a whitespace between text and "--":
+.
+foo -- bar -- baz
+.
+<p>foo -- bar -- baz</p>
+.
+
+
+Newline should be considered a whitespace:
+.
+--test
+--
+
+--
+test--
+
+--
+test
+--
+.
+<h2>--test</h2>
+<p>--
+test--</p>
+<h2>--
+test</h2>
+.
+
+
+.
+x --a --foo-----------bar-- b--
+
+x --a --foo------------bar-- b--
+.
+<p>x <del>a <del>foo-</del></del>--<del><del>bar</del> b</del></p>
+<p>x <del>a <del>foo</del></del>----<del><del>bar</del> b</del></p>
+.
+
+
+From CommonMark test suite, replacing `**` with our marker:
+
+.
+a--"foo"--
+.
+<p>a--&quot;foo&quot;--</p>
+.
+
+
+Should parse delimiters delide links:
+.
+[--foo--]()
+.
+<p><a href=""><del>foo</del></a></p>
+.
+
+
+Regression test for markdown-it/markdown-it#742:
+.
+-----;------
+.
+<p>-<del><del>;</del></del>--</p>
+.
